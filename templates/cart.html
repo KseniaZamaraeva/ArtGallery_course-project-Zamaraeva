@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Кошик</h2>
+{% if items|length > 0 %}
+<form method="post" action="{{ url_for('place_order') }}">
+<table class="table">
+  <thead><tr><th>Назва</th><th>Кількість</th><th>Ціна</th><th></th></tr></thead>
+  <tbody>
+    {% for art, qty in items %}
+    <tr>
+      <td>{{ art.title }}</td>
+      <td>{{ qty }}</td>
+      <td>{{ art.price or 'за домовленістю' }}</td>
+      <td>
+        <a class="btn btn-sm btn-outline-danger" href="{{ url_for('remove_from_cart', art_id=art.id) }}">Видалити</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="card p-3 mb-3">
+  <h5>Дані для оформлення</h5>
+  <div class="row">
+    <div class="col-md-4"><input name="name" class="form-control" placeholder="Ім'я"></div>
+    <div class="col-md-4"><input name="email" class="form-control" placeholder="Email"></div>
+    <div class="col-md-4"><input name="phone" class="form-control" placeholder="Телефон"></div>
+  </div>
+  <div class="mt-2"><input name="address" class="form-control" placeholder="Адреса доставки"></div>
+  <div class="mt-2"><textarea name="notes" class="form-control" placeholder="Додаткові побажання"></textarea></div>
+  <div class="mt-2 small text-muted">Якщо вам потрібні додаткові приклади чи фото, скористайтесь сторінкою "Сформувати замовлення".</div>
+</div>
+<div class="d-flex justify-content-end">
+  <button type="submit" class="btn btn-primary">Оформити замовлення</button>
+  <a href="{{ url_for('index') }}" class="btn btn-outline-secondary ms-2">Продовжити покупки</a>
+</div>
+</form>
+{% else %}
+  <div class="alert alert-info">Кошик порожній</div>
+{% endif %}
+{% endblock %}

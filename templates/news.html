@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Новини та акції</h2>
+{% for n in items %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ n.title }}</h5>
+      <p class="card-text">{{ n.content }}</p>
+    </div>
+  </div>
+{% else %}
+  <p>Поки що немає новин.</p>
+{% endfor %}
+{% endblock %}

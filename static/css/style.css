@@ -1,0 +1,43 @@
+/* Pastel theme for the gallery */
+:root{
+	--bg: #f9f6f2; /* very light cream */
+	--muted: #f3e9f6; /* pastel lavender */
+	--accent: #c7e7d9; /* pastel mint */
+	--primary: #ffd6e0; /* pastel pink */
+	--text: #333333;
+	--card: #ffffff;
+	--btn-border: #e7dfe9;
+}
+
+body{
+	background: var(--bg);
+	color: var(--text);
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.navbar{
+	background: linear-gradient(90deg, var(--muted), var(--accent));
+}
+.navbar .navbar-brand, .navbar .nav-link{ color: #4b3b5a !important; }
+
+.card{ background: var(--card); border: 1px solid var(--btn-border); box-shadow: 0 4px 10px rgba(75,59,90,0.03); }
+.card-img-top{ height:220px; object-fit:cover; }
+
+.btn-primary{
+	background: var(--primary); border-color: var(--btn-border); color: #5a3742;
+}
+.btn-outline-primary{ color: #5a3742; border-color: var(--btn-border); }
+.btn-outline-primary:hover, .btn-primary:hover{ filter: brightness(0.98); }
+
+footer{ background: linear-gradient(180deg, rgba(255,255,255,0.6), var(--muted)); }
+
+.badge-pastel{ background: var(--accent); color: #4b3b5a; }
+
+/* Utility spacing */
+.mb-3{ margin-bottom:1rem !important; }
+
+/* Form tweaks */
+input.form-control, textarea.form-control{ border-radius: 6px; }
+
+/* Small responsive tweaks for image cards in other templates */
+@media (max-width: 576px){ .card-img-top{ height:160px; } }

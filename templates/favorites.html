@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Вибране</h2>
+<div class="row">
+  {% for art in artworks %}
+  <div class="col-md-4">
+    <div class="card mb-3">
+      {% if art.image_filename %}<img src="{{ url_for('uploads', filename=art.image_filename) }}" class="card-img-top" style="height:200px;object-fit:cover;">{% endif %}
+      <div class="card-body">
+        <h5>{{ art.title }}</h5>
+        <p>{{ art.description[:100] }}{% if art.description|length>100 %}...{% endif %}</p>
+        <div class="d-flex justify-content-between">
+          <a class="btn btn-sm btn-primary" href="{{ url_for('add_to_cart', art_id=art.id) }}">Додати у кошик</a>
+          <a class="btn btn-sm btn-outline-danger" href="{{ url_for('remove_favorite', art_id=art.id) }}">Видалити</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+    <p>Ваш список вподобань порожній.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Сформувати замовлення</h2>
+<p>Заповніть форму нижче, щоб надіслати побажання щодо створення картини. Ви можете додати файли з прикладами або ескізи.</p>
+<p>Будь ласка, прочитайте наведені нижче правила. Це допоможе уникнути непорозумінь та зробити процес замовлення і створення твору максимально комфортним.</p>
+<form method="post" action="{{ url_for('compose_order') }}" enctype="multipart/form-data">
+  <div class="row mb-2">
+    <div class="col-md-4"><input name="name" class="form-control" placeholder="Ім'я"></div>
+    <div class="col-md-4"><input name="email" class="form-control" placeholder="Email"></div>
+    <div class="col-md-4"><input name="phone" class="form-control" placeholder="Телефон"></div>
+  </div>
+  <div class="mb-2"><input name="address" class="form-control" placeholder="Адреса доставки"></div>
+  <div class="mb-2"><textarea name="notes" class="form-control" placeholder="Ваші побажання, розміри, стиль тощо" rows="5"></textarea></div>
+  <div class="mb-2">
+    <label class="form-label">Додати приклади / ескізи (можна декілька файлів)</label>
+    <input type="file" name="reference_files" class="form-control" multiple>
+  </div>
+  <button class="btn btn-primary" type="submit">Надіслати</button>
+</form>
+{% endblock %}

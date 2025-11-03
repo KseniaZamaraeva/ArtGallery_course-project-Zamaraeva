@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block content %} 
+<div class="row mb-4"> 
+  <div class="col-md-8"> 
+    <h1>Галерея робіт Ксенії Замараєвої</h1> 
+    <p>Ласкаво прошу до моєї онлайн-галереї. Тут ви знайдете приклади робіт та зможете оформити замовлення.</p> 
+  </div> <div class="col-md-4"> 
+    <div class="card p-3"> 
+      <h5>Про автора</h5> 
+      <p>Мене звати Ксенія, я художник і творець цієї сторінки. У своїй роботі я поєдную авторський підхід з творчістю, створюючи картини на замовлення та пропоную авторські картини для продажу. Індивідуальність та естетика в деталях - це серце кожного твору.</p> 
+    </div> 
+  </div> 
+</div> 
+<div class="row"> 
+  {% for art in artworks %} 
+  <div class="col-md-4"> 
+    <div class="card mb-4"> 
+      {% if art.image_filename %} 
+      <img src="{{ url_for('uploads', filename=art.image_filename) }}" class="card-img-top" style="height:220px;object-fit:cover;"> 
+      {% endif %} 
+      <div class="card-body"> 
+        <h5 class="card-title">{{ art.title }}</h5> 
+        <p class="card-text">{{ art.description[:120] }}{% if art.description|length>120 %}...{% endif %}</p> 
+        <p><strong>Автор:</strong> {{ art.author or 'Ксенія Замараєва' }}</p> 
+        <p><strong>Ціна:</strong> {{ art.price or 'за домовленістю' }}</p> 
+        <a class="btn btn-outline-primary btn-sm" href="{{ url_for('add_favorite', art_id=art.id) }}">Вибране</a> 
+        <a class="btn btn-primary btn-sm" href="{{ url_for('add_to_cart', art_id=art.id) }}">У кошик</a> 
+      </div> 
+    </div> 
+  </div> {% endfor %} 
+</div> {% endblock %}

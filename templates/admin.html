@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Панель адміністратора</h2>
+<div class="row">
+  <div class="col-md-8">
+    <h5>Твори</h5>
+    <a class="btn btn-success mb-2" href="{{ url_for('admin_add_artwork') }}">Додати твір</a>
+    <table class="table table-striped">
+      <thead><tr><th>Зобр.</th><th>Назва</th><th>Автор</th><th>Ціна</th></tr></thead>
+      <tbody>
+        {% for a in artworks %}
+        <tr>
+          <td style="width:100px;">{% if a.image_filename %}<img src="{{ url_for('uploads', filename=a.image_filename) }}" style="max-width:90px;">{% endif %}</td>
+          <td>{{ a.title }}</td><td>{{ a.author }}</td><td>{{ a.price or 'за домовл.' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4">
+    <h5>Новини</h5>
+    <a class="btn btn-primary mb-2" href="{{ url_for('admin_add_news') }}">Додати новину</a>
+    {% for n in news %}<div class="mb-2"><strong>{{ n.title }}</strong></div>{% endfor %}
+    <h5 class="mt-4">Користувачі</h5>
+    <ul>
+      {% for u in users %}<li>{{ u.username }} ({{ u.role }})</li>{% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

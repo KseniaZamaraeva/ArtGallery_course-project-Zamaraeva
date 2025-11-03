@@ -12,7 +12,7 @@
 ## 🚀 Запуск проєкту  
 1. Клонуйте репозиторій:  
    ```bash
-   git clone https://github.com/username/art-gallery-system.git
+   git clone https://github.com/KseniaZamaraeva/ArtGallery_course-project-Zamaraeva.git
    
 2. Встановіть необхідні залежності.
    

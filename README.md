@@ -16,10 +16,11 @@
    
 2. Встановіть необхідні залежності.
    
-3.Запустіть проєкт локально:
-```bash
-python main.py
+3. Запустіть проєкт локально:
+   ```bash
+   python main.py
 
 4. Відкрийте у браузері:
-```arduino
-http://localhost:5000
+   ```arduino
+   http://localhost:5000
+   
